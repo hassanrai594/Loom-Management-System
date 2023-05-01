@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignIn Page</title>
+    <script>
+        const getToken = localStorage.getItem("token");
+        const data = {"token" : getToken , "role" : "employee"}
+        
+        // Check if User that is signedIn Person is authorized to View this page or not
+        fetch('http://localhost:4000/verify/token', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify(data)})
+        .then((response) => response.json())
+        .then((data) => {
+        if(data.status){ 
+
+         }
+        else{ window.location.replace("http://localhost:4000/user/signin") }
+        })
+        .catch((error) => {
+        console.error('Error:', error);
+        });
+
+    </script>
+
+</head>
+<body>
+
+    <h1> THIS IS Employ Records PAGE </h1>
+    <p> Hassan's Project </p>
+
+</body>
+</html>

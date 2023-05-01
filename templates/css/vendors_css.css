@@ -1,0 +1,48 @@
+/****************************/
+/** Imports Plugin css **/
+/****************************/
+@import url(../assets/vendor_components/css/bootstrap.css);
+@import url(../assets/vendor_components/css/perfect-scrollbar.css);
+@import url(../assets/vendor_components/css/morris.css);
+@import url(../assets/vendor_components/css/owl.carousel.css);
+@import url(../assets/vendor_components/css/owl.theme.default.min.css);
+@import url(../assets/vendor_components/css/horizontal-timeline.css);
+@import url(../assets/vendor_components/flexslider/flexslider.css);
+@import url(../assets/vendor_components/css/prism.css);
+@import url(../assets/vendor_components/css/datatables.min.css);
+@import url(../assets/vendor_components/css/magnific-popup.css);
+@import url(../assets/vendor_components/css/animated-masonry-gallery.css);
+@import url(../assets/vendor_components/css/ekko-lightbox.css);
+@import url(../assets/vendor_components/css/jquery-jvectormap-2.0.2.css);
+@import url(../assets/vendor_components/css/bootstrap-editable.css);
+@import url(../assets/vendor_components/css/sweetalert.css);
+@import url(../assets/vendor_components/css/bootstrap-markdown.css);
+@import url(../assets/vendor_components/css/dropzone.css);
+@import url(../assets/vendor_components/css/select2.min.css);
+@import url(../assets/vendor_components/css/daterangepicker.css);
+@import url(../assets/vendor_components/css/bootstrap-datepicker.min.css);
+@import url(../assets/vendor_components/css/bootstrap-colorpicker.min.css);
+@import url(../assets/vendor_components/css/bootstrap-select.css);
+@import url(../assets/vendor_components/css/bootstrap-tagsinput.css);
+@import url(../assets/vendor_components/css/jquery.bootstrap-touchspin.css);
+@import url(../assets/vendor_components/css/jquery.raty.css);
+@import url(../assets/vendor_components/css/ion.rangeSlider.css);
+@import url(../assets/vendor_components/css/ion.rangeSlider.skinModern.css);
+@import url(../assets/vendor_components/css/gridstack.css);
+@import url(../assets/vendor_components/css/jquery.toast.css);
+@import url(../assets/vendor_components/css/nestable.css);
+@import url(../assets/vendor_components/css/switch.css);
+@import url(../assets/vendor_components/css/c3.min.css);
+@import url(../assets/vendor_components/css/chartist.css);
+@import url(../assets/vendor_plugins/bootstrap-slider/slider.css);
+@import url(../assets/vendor_plugins/iCheck/flat/blue.css);
+@import url(../assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css);
+@import url(../assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.css);
+@import url(../assets/vendor_plugins/iCheck/all.css);
+@import url(../assets/vendor_plugins/timepicker/bootstrap-timepicker.min.css);
+@import url(../assets/vendor_plugins/pace/pace.min.css);
+@import url(../assets/vendor_components/fullcalendar/fullcalendar.min.css);
+/*@import "../assets/vendor_components/fullcalendar/fullcalendar.print.min.css" print;*/
+@import url(../assets/vendor_components/weather-icons/weather-icons.css);
+
+/*# sourceMappingURL=vendors_css.css.map */

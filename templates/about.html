@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="with=device-width" , initial-scale="1.0">
+    <title>E-LOOM</title>
+    <link rel="stylesheet" href="/css/style2.css">
+    <link rel="preconnect" href="http://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <section class="header">
+        <nav>
+            <a href="index.html"><img src="/IMAGES/download.png" decoding="async"></a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="http://localhost:4000/home">HOME</a></li>
+                    <li><a href="http://localhost:4000/home/about">ABOUT</a></li>
+                    <li><a href="http://localhost:4000/home/contact">CONTACT</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+        <div class="text-box">
+            <h1>About Us</h1>
+        </div>
+    </section>
+
+    <!---------- about us content----------->
+
+    <section class="about-us">
+        <div class="row">
+            <div class="about-col">
+                <h1>We are the Pakistan's Biggest Textile Industry</h1>
+                <p>E-LOOM Textiles is among the foremost enterprises of Pakistan. The group started with textile processing in 1956 and progressively flourished into a renowned industry. We aspire to provide outstanding quality materials to our clients by
+                    gratifying their expectations and maintaining their confidence on a supreme level. E-LOOM textiles operate worldwide catering to the local markets as well as serving the international markets. Sitara Hamza private Ltd. supplies to
+                    the local market whilst Sitara textiles focuses 100% on export. We always endeavor to offer superlative quality textiles by adopting the most innovative approaches. Sitara textiles along with its subsidiaries outshine the entire textile
+                    industry.
+                </p>
+                <a href="" class="hero-btn red-btn">EXPLORE NOW</a>
+            </div>
+            <div class="about-col">
+                <img src="/IMAGES/download6.jpg" decoding="async">
+            </div>
+        </div>
+    </section>
+
+    <!--Footer-->
+
+    <section class="footer">
+        <h4>About Us</h4>
+        <p>You can also Contact Us and<br>See Us on our Social Media Paltforms</p>
+        <div class="icons">
+            <a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a>
+            <a href="https://twitter.com/login" target="_blank"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/login" target="_blank"><i class="fa fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/?hl=en" target="_blank"><i class="fa fa-instagram"></i></a>
+        </div>
+        <p>Developed by Rai Hassan</p>
+    </section>
+
+    <!--Javascript for toggle menu-->
+
+    <script>
+        var navLinks = document.getElementById('navLinks');
+
+        function showMenu() {
+            navLinks.style.right = '0';
+        }
+
+        function hideMenu() {
+            navLinks.style.right = '-200px'
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="with=device-width" , initial-scale="1.0">
+    <title>E-LOOM</title>
+    <link rel="stylesheet" href="/css/style2.css">
+    <link rel="preconnect" href="http://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <section class="header">
+        <nav>
+            <a href="index.html"><img src="/IMAGES/download.png" decoding="async"></a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="http://localhost:4000/home">HOME</a></li>
+                    <li><a href="http://localhost:4000/home/about">ABOUT</a></li>
+                    <li><a href="http://localhost:4000/home/contact">CONTACT</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+        <div class="text-box">
+            <h1>Contact Us</h1>
+        </div>
+    </section>
+
+    <!---------- contact us content----------->
+
+    <section class="location">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13282.85869236419!2d73.0287206!3d33.6645543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1669050844091!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen=""
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+
+    <section class="contact-us">
+
+        <div class="row">
+            <div class="contact-col">
+                <div>
+                    <i class="fa fa-home"></i></a>
+                    <span>
+                        <h5>Sector I-10/2 , Service Rd East I-10</h5>
+                        <p>Islamabad, Federal, Pakistan</p>
+                    </span>
+                </div>
+
+                <div>
+                    <i class="fa fa-phone"></i></a>
+                    <span>
+                        <h5>+92 3218665188</h5>
+                        <p>Monday to Friday, 9AM to 6PM</p>
+                    </span>
+                </div>
+
+                <div>
+                    <i class="fa fa-envelope-o"></i></a>
+                    <span>
+                        <h5>hassanrai594@gmail.com</h5>
+                        <p>Email us your query</p>
+                    </span>
+                </div>
+            </div>
+
+            <div class="contact-col">
+                <input type="text" id="name" placeholder="Enter your name" required>
+                <input type="email" id="email" placeholder="Enter your email address" required>
+                <input type="text" id="subject" placeholder="Enter your subject" required>
+                <textarea rows="8" id="message" placeholder="Message"></textarea>
+                <button type="submit" class="hero-btn red-btn" onclick="addQuery()">Send Message</button>
+            </div>
+        </div>
+    </section>
+
+    <!--Footer-->
+
+    <section class="footer">
+        <h4>About Us</h4>
+        <p>You can also Contact Us and<br>See Us on our Social Media Paltforms</p>
+        <div class="icons">
+            <a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a>
+            <a href="https://twitter.com/login" target="_blank"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/login" target="_blank"><i class="fa fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/?hl=en" target="_blank"><i class="fa fa-instagram"></i></a>
+        </div>
+        <p>Developed by Rai Hassan</p>
+    </section>
+
+    <!--Javascript for toggle menu-->
+
+    <script>
+        var navLinks = document.getElementById('navLinks');
+
+        function showMenu() {
+            navLinks.style.right = '0';
+        }
+
+        function hideMenu() {
+            navLinks.style.right = '-200px'
+        }
+
+
+        // addquery function
+        function addQuery() {
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const subject = document.getElementById("subject").value;
+            const message = document.getElementById("message").value;
+            var letters = /^[A-Za-z]+$/;
+            var mailformat = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+            if (name.match(letters) && email.match(mailformat)) {
+                let url = "http://localhost:4000/query/addQuery";
+                const details = {
+                    'name': name,
+                    'email': email,
+                    'subject': subject,
+                    'message': message,
+                };
+
+                let formBody = [];
+                for (var property in details) {
+                    let encodedKey = encodeURIComponent(property);
+                    let encodedValue = encodeURIComponent(details[property]);
+                    formBody.push(encodedKey + "=" + encodedValue);
+                }
+                formBody = formBody.join("&");
+
+                fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: formBody
+                }).then(response => response.json()).then((data) => {
+                    if (data.status) {
+                        var message = JSON.stringify(data.message)
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: message,
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+
+                        setTimeout(function() {
+                            window.location.reload();
+                        }, 2500);
+
+                    } else {
+                        alert(data.message);
+                        var message1 = JSON.stringify(data.message)
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'error',
+                            title: message1,
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                    }
+                }).catch((err) => {
+                    console.log(err, "Error");
+                });
+            } else {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Name should contain alphabets without space ' + 'or' + '  You have entered an invalid email address!',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            }
+        }
+    </script>
+</body>
+
+</html>

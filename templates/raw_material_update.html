@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .account-settings .user-profile {
+            margin: 0 0 1rem 0;
+            padding-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .account-settings .user-profile .user-avatar {
+            margin: 0 0 1rem 0;
+        }
+        
+        .account-settings .user-profile .user-avatar img {
+            width: 90px;
+            height: 90px;
+            -webkit-border-radius: 100px;
+            -moz-border-radius: 100px;
+            border-radius: 100px;
+        }
+        
+        .account-settings .user-profile h5.user-name {
+            margin: 0 0 0.5rem 0;
+        }
+        
+        .account-settings .user-profile h6.user-email {
+            margin: 0;
+            font-size: 0.8rem;
+            font-weight: 400;
+        }
+        
+        .account-settings .about {
+            margin: 1rem 0 0 0;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+        
+        .card {
+            background: #272E48;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            border: 0;
+            margin-bottom: 1rem;
+        }
+        
+        .form-control {
+            border: 1px solid #596280;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            font-size: .825rem;
+            background: #1A233A;
+            color: #bcd0f7;
+        }
+        /* logout form */
+        
+        * {
+            font-family: 'Poppins', 'sans-serif';
+        }
+        /* Set a style for all buttons */
+        
+        .btn1 {
+            background-color: #007bff;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            width: 40%;
+        }
+        
+        .btn2 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+        /* Extra styles for the cancel button */
+        
+        .cancelbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #f44336;
+        }
+        
+        .container1 {
+            padding: 30px;
+            width: 100%;
+        }
+        
+        span.psw {
+            float: right;
+            padding-top: 16px;
+        }
+        /* The Modal (background) */
+        
+        .modal1 {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+            padding-top: 60px;
+            border-radius: 0.5rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* Modal Content/Box */
+        
+        .modal1-content {
+            background-color: #272E48;
+            margin: 5% auto 15% auto;
+            /* 5% from the top, 15% from the bottom and centered */
+            border: 1px solid #888;
+            width: 30%;
+            /* Could be more or less, depending on screen size */
+            border-radius: 0.5rem;
+        }
+        /* The Close Button (x) */
+        
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 0;
+            color: #000;
+            font-size: 35px;
+            font-weight: bold;
+        }
+        
+        h2 {
+            text-align: center;
+            color: white;
+            padding-bottom: 30px;
+        }
+        
+        .btn1 {
+            font-weight: 600;
+        }
+        /* Add Zoom Animation */
+        
+        .animate {
+            -webkit-animation: animatezoom 0.6s;
+            animation: animatezoom 0.6s
+        }
+        
+        @-webkit-keyframes animatezoom {
+            from {
+                -webkit-transform: scale(0)
+            }
+            to {
+                -webkit-transform: scale(1)
+            }
+        }
+        
+        @keyframes animatezoom {
+            from {
+                transform: scale(0)
+            }
+            to {
+                transform: scale(1)
+            }
+        }
+        /* Change styles for span and cancel button on extra small screens */
+        
+        @media screen and (max-width: 300px) {
+            span.psw {
+                display: block;
+                float: none;
+            }
+            .cancelbtn {
+                width: 100%;
+            }
+        }
+        
+        .dropdown-item {
+            cursor: pointer;
+        }
+        
+        .container {
+            padding-left: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo-details">
+            <span class="logo_name">LOOM MANAGEMENT SYSTEM</span>
+        </div>
+        <br>
+        <hr class="hr_line">
+        <ul class="nav-links">
+            <li>
+                <a href="http://localhost:4000/user/dashboard">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="links_name">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:4000/user/dashboard-users">
+                    <i class='bx bx-user'></i>
+                    <span class="links_name">User</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:4000/loom/dashboard-looms">
+                    <i class='fa fa-industry'></i>
+                    <span class="links_name">Loom</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:4000/product/dashboard-product">
+                    <i class='bx bx-closet'></i>
+                    <span class="links_name">Product</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:4000/raw_material/dashboard-raw_material" class="active">
+                    <i class='bx bx-collection'></i>
+                    <span class="links_name">Raw Material</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:4000/sale/dashboard-sale">
+                    <i class='fa fa-sort-amount-asc'></i>
+                    <span class="links_name">Sale</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:4000/purchase/dashboard-purchase">
+                    <i class='fa fa-sort-amount-desc'></i>
+                    <span class="links_name">Purchase</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:4000/stock/dashboard-stock">
+                    <i class='bx bx-store'></i>
+                    <span class="links_name">Stock</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:4000/report/dashboard-reports">
+                    <i class='bx bx-pie-chart-alt-2'></i>
+                    <span class="links_name">Reports</span>
+                </a>
+            </li>
+            <li class="log_out">
+                <a onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
+                    <i class='bx bx-log-out'></i>
+                    <span class="links_name">Log out</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <section class="home-section">
+        <nav>
+            <div class="sidebar-button">
+                <i class='bx bx-menu sidebarBtn'></i>
+                <span class="dashboard">Raw Material</span>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="Search...">
+                <i class='bx bx-search'></i>
+            </div>
+            <div class="profile-details">
+                <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/IMAGES/rai.jpeg" id="blah1" decoding="async" alt="" class="user-avatar-md rounded-circle"></a>
+                <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+                    <a class="dropdown-item" href="http://localhost:4000/account/dashboard-account"><i class="bx bx-user"></i>&nbsp;&nbsp;&nbsp;&nbsp;Account</a>
+                    <a class="dropdown-item" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
+                        <i class='bx bx-log-out'></i>&nbsp;&nbsp;&nbsp;&nbsp;Log out</a>
+                </div>
+                <span class="admin_name" id="user-name">RAI HASSAN</span>
+                <span style="cursor: pointer;" class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class='bx bx-chevron-down' class="user-avatar-md rounded-circle"></i></span>
+            </div>
+        </nav>
+
+        <br><br><br><br>
+        <div class="container" style="color:rgb(255, 255, 255);">
+            <div class="row gutters">
+                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <h6 class="mb-3 text-primary">Raw Material Details</h6>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="fullName">Raw Material Description</label>
+                                        <input type="text" class="form-control" id="raw_materialDescription" placeholder="Enter Raw Material Name">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="eMail">Rate</label>
+                                        <input type="number" class="form-control" id="raw_materialRate" placeholder="Enter Raw Material Rate">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="text-right">
+                                    <button type="button" id="submit1" name="submit" onClick="" class="btn btn-secondary">Cancel</button>
+                                    <button type="button" id="submit" class="btn btn-primary" onclick="updateChanges()">Update Raw Material</button>&nbsp;&nbsp;&nbsp;
+                                </div>
+                            </div>
+                        </div>
+                        &nbsp;&nbsp;&nbsp;
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- Logout popup window -->
+    <div id="id01" class="modal1">
+        <div class="modal1-content animate">
+            <div class="container1">
+                <br>
+                <h2>Are you sure <br> You want to logout?</h2>
+                <br>
+                <div class="btn2">
+                    <button class="btn1" id="submit2" onclick="">Cancel</button>
+                    <button onclick="logoutFunction()" class="btn1">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function getCookie(name) {
+            let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+            if (match) {
+                return match[2]
+            }
+        }
+
+        // getting data of the user which is logged IN, to the dashboard.
+        var d = JSON.parse(localStorage.getItem('result'));
+        console.log(d);
+
+        // filling the information of logged user.
+        const element = document.getElementById("user-name");
+        element.innerHTML = d.username;
+
+        var fullPath = "/uploads/images/" + d.image;
+        console.log(fullPath);
+        document.getElementById("blah1").src = fullPath;
+
+        // getting data from other userlist page.
+        var c = JSON.parse(localStorage.getItem("updateRaw_material"))
+        console.log(c)
+
+        // Filling the values of the clicked user in the form.
+        var r_description = document.getElementById("raw_materialDescription").value = c.r_description;
+        var r_rate = document.getElementById("raw_materialRate").value = c.r_rate;
+
+        // update changes function
+        function updateChanges() {
+
+            var r_description = document.getElementById("raw_materialDescription").value;
+            var r_rate = document.getElementById("raw_materialRate").value;
+            let url = "http://localhost:4000/raw_material/updateRaw_material";
+            let token = getCookie("token");
+            const details = {
+                'r_description': r_description,
+                'r_rate': r_rate,
+            };
+            console.log(details);
+            let formBody = [];
+            for (var property in details) {
+                let encodedKey = encodeURIComponent(property);
+                let encodedValue = encodeURIComponent(details[property]);
+                formBody.push(encodedKey + "=" + encodedValue);
+            }
+            console.log(formBody)
+            formBody = formBody.join("&");
+            fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "token": token,
+                },
+                body: formBody
+            }).then(responce => responce.json()).then((data) => {
+                if (data.status) {
+                    // window.location = "http://localhost:4000/raw_material/dashboard-raw_material"
+                    var message1 = JSON.stringify(data.message)
+                        // alert(message);
+                        // location.reload();
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: message1,
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+
+                    // will redirect to your product page
+                    setTimeout(function() {
+                        window.location.href = "http://localhost:4000/raw_material/dashboard-raw_material";
+                    }, 2500);
+                } else {
+                    var message = JSON.stringify(data.message)
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: message,
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                }
+            }).catch(err => console.log(err))
+        }
+
+
+
+        // sidebar button
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarBtn = document.querySelector(".sidebarBtn");
+        sidebarBtn.onclick = function() {
+            sidebar.classList.toggle("active");
+            if (sidebar.classList.contains("active")) {
+                sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+            } else
+                sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+        }
+
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+
+        // logout function
+        function logoutFunction() {
+            const logoutUrl = "http://localhost:4000/home/signin ";
+            // Delete Cookies
+            document.cookie = 'token=; Max-Age=0; path=/; domain=' + location.hostname;
+            // Redirect to signin page
+            window.location.replace(logoutUrl);
+        }
+
+
+        // cancel button
+        document.getElementById("submit1").onclick = function() {
+            location.href = "http://localhost:4000/raw_material/dashboard-raw_material";
+        };
+
+        document.getElementById("submit2").onclick = function() {
+            location.href = "http://localhost:4000/raw_material/dashboard-raw_material_update";
+        };
+    </script>
+
+</body>
+
+</html>

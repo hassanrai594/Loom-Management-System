@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+
+    <style>
+        .account-settings .user-profile {
+            margin: 0 0 1rem 0;
+            padding-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .account-settings .user-profile .user-avatar {
+            margin: 0 0 1rem 0;
+        }
+        
+        .account-settings .user-profile .user-avatar img {
+            width: 90px;
+            height: 90px;
+            -webkit-border-radius: 100px;
+            -moz-border-radius: 100px;
+            border-radius: 100px;
+        }
+        
+        .account-settings .user-profile h5.user-name {
+            margin: 0 0 0.5rem 0;
+        }
+        
+        .account-settings .user-profile h6.user-email {
+            margin: 0;
+            font-size: 0.8rem;
+            font-weight: 400;
+        }
+        
+        .account-settings .about {
+            margin: 1rem 0 0 0;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+        
+        .card {
+            background: #272E48;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            border: 0;
+            margin-bottom: 1rem;
+        }
+        
+        .form-control {
+            border: 1px solid #596280;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            font-size: .825rem;
+            background: #1A233A;
+            color: #bcd0f7;
+        }
+        /* logout form */
+        
+        * {
+            font-family: 'Poppins', 'sans-serif';
+        }
+        /* Set a style for all buttons */
+        
+        .btn1 {
+            background-color: #007bff;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            width: 40%;
+        }
+        
+        .btn2 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+        /* Extra styles for the cancel button */
+        
+        .cancelbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #f44336;
+        }
+        
+        .container1 {
+            padding: 30px;
+            width: 100%;
+        }
+        
+        span.psw {
+            float: right;
+            padding-top: 16px;
+        }
+        /* The Modal (background) */
+        
+        .modal1 {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+            padding-top: 60px;
+            border-radius: 0.5rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* Modal Content/Box */
+        
+        .modal1-content {
+            background-color: #272E48;
+            margin: 5% auto 15% auto;
+            /* 5% from the top, 15% from the bottom and centered */
+            border: 1px solid #888;
+            width: 30%;
+            /* Could be more or less, depending on screen size */
+            border-radius: 0.5rem;
+        }
+        /* The Close Button (x) */
+        
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 0;
+            color: #000;
+            font-size: 35px;
+            font-weight: bold;
+        }
+        
+        h2 {
+            text-align: center;
+            color: white;
+            padding-bottom: 30px;
+        }
+        
+        .btn1 {
+            font-weight: 600;
+        }
+        /* Add Zoom Animation */
+        
+        .animate {
+            -webkit-animation: animatezoom 0.6s;
+            animation: animatezoom 0.6s
+        }
+        
+        @-webkit-keyframes animatezoom {
+            from {
+                -webkit-transform: scale(0)
+            }
+            to {
+                -webkit-transform: scale(1)
+            }
+        }
+        
+        @keyframes animatezoom {
+            from {
+                transform: scale(0)
+            }
+            to {
+                transform: scale(1)
+            }
+        }
+        /* Change styles for span and cancel button on extra small screens */
+        
+        @media screen and (max-width: 300px) {
+            span.psw {
+                display: block;
+                float: none;
+            }
+            .cancelbtn {
+                width: 100%;
+            }
+        }
+        
+        .dropdown-item {
+            cursor: pointer;
+        }
+        /* Download btn */
+        
+        #exportButton {
+            border-radius: 4px;
+            margin-left: 850px;
+            background: #0A2558;
+            color: white;
+            font-family: 'Poppins', 'sans-serif';
+            border: #0A2558;
+            font-size: 17px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo-details">
+            <span class="logo_name">LOOM MANAGEMENT SYSTEM</span>
+        </div>
+        <br>
+        <hr class="hr_line">
+        <ul class="nav-links">
+            <li>
+                <a href="http://localhost:4000/user/dashboard">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="links_name">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:4000/user/dashboard-users">
+                    <i class='bx bx-user'></i>
+                    <span class="links_name">User</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:4000/loom/dashboard-looms">
+                    <i class='fa fa-industry'></i>
+                    <span class="links_name">Loom</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:4000/product/dashboard-product">
+                    <i class='bx bx-closet'></i>
+                    <span class="links_name">Product</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:4000/raw_material/dashboard-raw_material">
+                    <i class='bx bx-collection'></i>
+                    <span class="links_name">Raw Material</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:4000/sale/dashboard-sale">
+                    <i class='fa fa-sort-amount-asc'></i>
+                    <span class="links_name">Sale</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:4000/purchase/dashboard-purchase">
+                    <i class='fa fa-sort-amount-desc'></i>
+                    <span class="links_name">Purchase</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:4000/stock/dashboard-stock" class="active">
+                    <i class='bx bx-store'></i>
+                    <span class="links_name">Stock</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:4000/report/dashboard-reports">
+                    <i class='bx bx-pie-chart-alt-2'></i>
+                    <span class="links_name">Reports</span>
+                </a>
+            </li>
+            <li class="log_out">
+                <a onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
+                    <i class='bx bx-log-out'></i>
+                    <span class="links_name">Log out</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <section class="home-section">
+        <nav>
+            <div class="sidebar-button">
+                <i class='bx bx-menu sidebarBtn'></i>
+                <span class="dashboard">Stock</span>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="Search..." id="myInput" onkeyup="searchFunction()">
+                <i class='bx bx-search'></i>
+            </div>
+            <div class="profile-details">
+                <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/IMAGES/rai.jpeg" id="blah1" decoding="async" alt="" class="user-avatar-md rounded-circle"></a>
+                <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+                    <a class="dropdown-item" href="http://localhost:4000/account/dashboard-account"><i class="bx bx-user"></i>&nbsp;&nbsp;&nbsp;&nbsp;Account</a>
+                    <a class="dropdown-item" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
+                        <i class='bx bx-log-out'></i>&nbsp;&nbsp;&nbsp;&nbsp;Log out</a>
+                </div>
+                <span class="admin_name" id="user-name">RAI HASSAN</span>
+                <span style="cursor: pointer;" class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class='bx bx-chevron-down' class="user-avatar-md rounded-circle"></i></span>
+            </div>
+        </nav>
+
+
+        <div class="home-content">
+            <div class="sales-boxes">
+                <div class="recent-sales box">
+                    <div class="title">Stock List</div>
+                    <table class="table table-striped" id="myTable" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Product Weight</th>
+                                <th scope="col">Raw Material Weight</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                    <div class="button">
+                        <!-- <a href="#">Add Stock</a> -->
+                        <button id="exportButton" class="btn" onclick="ExportToExcel('xlsx')">Export</button>
+                        <!-- <span class="fa fa-file-pdf-o"></span> -->
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- Logout popup window -->
+    <div id="id01" class="modal1">
+        <div class="modal1-content animate">
+            <div class="container1">
+                <br>
+                <h2>Are you sure <br> You want to logout?</h2>
+                <br>
+                <div class="btn2">
+                    <button class="btn1" id="submit1" onclick="">Cancel</button>
+                    <button onclick="logoutFunction()" class="btn1">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // getting data of the user which is logged IN, to the dashboard.
+        var c = JSON.parse(localStorage.getItem('result'));
+        console.log(c);
+
+        // filling the information of logged user.
+        const element = document.getElementById("user-name");
+        element.innerHTML = c.username;
+
+        var fullPath = "/uploads/images/" + c.image;
+        console.log(fullPath);
+        document.getElementById("blah1").src = fullPath;
+
+        function getCookie(name) {
+            let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+            if (match) {
+                return match[2]
+            }
+        }
+
+        function generateTableHead(table, data) {
+            let thead = table.createTHead();
+            let rowCount = 1;
+            for (let key of data) {
+                let row = thead.insertRow();
+                let th = document.createElement("th");
+                let rowNumber = document.createTextNode(rowCount);
+                let tr_1 = document.createElement("td");
+                let Product_Weight = document.createTextNode(key.p_weight);
+                let tr_2 = document.createElement("td");
+                let Raw_Material_Weight = document.createTextNode(key.r_weight);
+
+                th.appendChild(rowNumber);
+                tr_1.appendChild(Product_Weight);
+                tr_2.appendChild(Raw_Material_Weight);
+
+                tr_1.insertAdjacentText('beforeend', '  Kgs');
+                tr_2.insertAdjacentText('beforeend', '  Kgs');
+
+                row.appendChild(th);
+                row.appendChild(tr_1);
+                row.appendChild(tr_2);
+
+                console.log(row);
+                rowCount++;
+            }
+        }
+
+        // export to excel sheet
+        function ExportToExcel(type, fn, dl) {
+            var elt = document.getElementById('myTable');
+            var wb = XLSX.utils.table_to_book(elt, {
+                sheet: "sheet1"
+            });
+            return dl ?
+                XLSX.write(wb, {
+                    bookType: type,
+                    bookSST: true,
+                    type: 'base64'
+                }) :
+                XLSX.writeFile(wb, fn || ('MySheetName.' + (type || 'xlsx')));
+        }
+
+        let getStockUrl = "http://localhost:4000/stock/getStock";
+        let token = getCookie("token");
+        fetch(getStockUrl, {
+            method: "GET",
+            headers: {
+                "token": token
+            }
+        }).then(responce => responce.json()).then((data) => {
+            if (data.status) {
+                let table = document.getElementById("myTable");
+                // Populate table with api data
+                generateTableHead(table, data.stock)
+            }
+        }).catch(err => console.log(err))
+
+
+
+        // sidebar button
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarBtn = document.querySelector(".sidebarBtn");
+        sidebarBtn.onclick = function() {
+            sidebar.classList.toggle("active");
+            if (sidebar.classList.contains("active")) {
+                sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+            } else
+                sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+        }
+
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Search bar
+        function searchFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+
+        // logout function
+        function logoutFunction() {
+            const logoutUrl = "http://localhost:4000/home/signin ";
+            // Delete Cookies
+            document.cookie = 'token=; Max-Age=0; path=/; domain=' + location.hostname;
+            // Redirect to signin page
+            window.location.replace(logoutUrl);
+        }
+
+        // cancel button
+        document.getElementById("submit1").onclick = function() {
+            location.href = "http://localhost:4000/stock/dashboard-stock";
+        };
+    </script>
+
+</body>
+
+</html>
